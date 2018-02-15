@@ -1,12 +1,17 @@
 SHELL = /bin/bash
 BUILD_DIR = ./.build
 
-ACCOUNT:=$(shell aws sts get-caller-identity --query Account | tr -d \")
-REGION:=$(shell aws configure list | awk '/region/ { print $$2 }')
+ifndef ACCOUNT
+  ACCOUNT:=$(shell aws sts get-caller-identity --query Account | tr -d \")
+endif
+
+ifndef REGION
+  REGION:=$(shell aws configure list | awk '/region/ { print $$2 }')
+endif
 
 ifndef BUCKET
-  ifdef BUCKET_SUFFIX
-    BUCKET:=$(REGION).$(ACCOUNT).$(BUCKET_SUFFIX)
+  ifdef BUCKET_PREFIX
+    BUCKET:=$(BUCKET_PREFIX)-$(ACCOUNT)-$(REGION)
   else
   	$(error BUCKET not defined)
   endif
