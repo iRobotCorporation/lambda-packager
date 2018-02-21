@@ -18,7 +18,7 @@ setup(
     author='Ben Kehoe',
     author_email='bkehoe@irobot.com',
     project_urls={
-        "https://github.com/benkehoe/lambda-packager",
+        "Source code": "https://github.com/benkehoe/lambda-packager",
     },
     license='Apache Software License 2.0',
     classifiers=(
