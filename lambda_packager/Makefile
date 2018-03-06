@@ -17,7 +17,7 @@ SHELL = /bin/bash
 
 $(if $(BUILD_DIR),,$(error BUILD_DIR required))
 
-PYTHON := PYTHON$(PYTHON_VERSION)
+PYTHON := python$(PYTHON_VERSION)
 
 printvar = @echo $(1):	$($(1))
 printfn = @echo $(1):	$(call $(1),$(FUNC_NAME))

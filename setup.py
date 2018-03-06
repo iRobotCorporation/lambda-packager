@@ -22,11 +22,12 @@ setup(
         ],
     },
     install_requires=[
+        "pyyaml",
     ],
     author='Ben Kehoe',
     author_email='bkehoe@irobot.com',
     project_urls={
-        "Source code": "https://github.com/benkehoe/lambda-packager",
+        "Source code": "https://github.com/iRobotCorporation/lambda-packager",
     },
     license='Apache Software License 2.0',
     classifiers=(

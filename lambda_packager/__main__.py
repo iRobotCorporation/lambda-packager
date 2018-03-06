@@ -26,11 +26,11 @@ import six
 from . import parameters, input_config, upload_config
 
 def run_make(action, args, other_args):
+    make_args = []
+    make_args += parameters.get_make_args(action, args, other_args)
+    make_args += input_config.get_make_args(action, args, other_args)
+    make_args += upload_config.get_make_args(action, args, other_args)
     with pkg_resources.resource_stream(__name__, 'Makefile') as fp:
-        make_args = []
-        make_args += parameters.get_make_args(action, args, other_args)
-        make_args += input_config.get_make_args(action, args, other_args)
-        make_args += upload_config.get_make_args(action, args, other_args)
         return subprocess.call(['make', '-f', '-'] + make_args + [action], stdin=fp)
 
 def main():
